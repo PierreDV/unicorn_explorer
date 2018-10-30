@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from settings import Settings
+from unicorn_dude import UnicornDude
 
 def run_game():
     # Initialize pygame, settings and screen object.
@@ -10,6 +11,9 @@ def run_game():
     screen = pygame.display.set_mode(
         (ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Unicorn Explorer")
+
+    # Make a unicorn dude.
+    unicorn_dude = UnicornDude(screen)
 
     # Start the main loop for the game.
     while True:
@@ -21,7 +25,8 @@ def run_game():
         
         # Redraw the screen during each pass through the loop.
         screen.fill(ai_settings.bg_color)
-
+        unicorn_dude.blitme()
+        
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
