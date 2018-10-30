@@ -8,6 +8,9 @@ def run_game():
     screen = pygame.display.set_mode((1200, 800))
     pygame.display.set_caption("Unicorn Explorer")
 
+    # Set the background color.
+    bg_color = (76, 209, 55)
+
     # Start the main loop for the game.
     while True:
 
@@ -16,6 +19,9 @@ def run_game():
             if event.type == pygame.QUIT:
                 sys.exit()
         
+        # Redraw the screen during each pass through the loop.
+        screen.fill(bg_color)
+
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
