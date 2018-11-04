@@ -15,13 +15,25 @@ class UnicornDude():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.centery = self.screen_rect.centery
 
-        # Movement flag
+        # Movement flags
         self.moving_right = False 
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def update(self):
         """Update the ship's position based on the movement flag."""
         if self.moving_right:
             self.rect.centerx += 1
+        
+        if self.moving_left:
+            self.rect.centerx -= 1
+        
+        if self.moving_up:
+            self.rect.centery -= 1
+
+        if self.moving_down:
+            self.rect.centery += 1
 
     def blitme(self):
         """Draw the unicorn dude at his current location."""
