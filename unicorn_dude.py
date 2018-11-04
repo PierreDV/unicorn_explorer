@@ -7,7 +7,7 @@ class UnicornDude():
         self.screen = screen
 
         # Load the unicorn dude and get his rect.
-        self.image = pygame.image.load('images/unicorn_dude_standing_front.bmp')
+        self.image = pygame.image.load('images/unicorn_dude_front_standing.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         
