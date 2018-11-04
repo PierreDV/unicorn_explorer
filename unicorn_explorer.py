@@ -13,7 +13,7 @@ def run_game():
     pygame.display.set_caption("Unicorn Explorer")
 
     # Make a unicorn dude.
-    unicorn_dude = UnicornDude(screen)
+    unicorn_dude = UnicornDude(ai_settings, screen)
 
     # Start the main loop for the game.
     while True:
