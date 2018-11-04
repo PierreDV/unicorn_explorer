@@ -10,7 +10,11 @@ def check_events(unicorn_dude):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 # Move unicorn dude to the right.
-                unicorn_dude.rect.centerx += 1
+                unicorn_dude.moving_right = True
+
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
+                unicorn_dude.moving_right = False
 
 def update_screen(ai_settings, screen, unicorn_dude):
     """Update images on the screen and flip to the new screen."""
