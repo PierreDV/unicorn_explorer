@@ -2,60 +2,46 @@ import pygame
 
 class UnicornDude():
 
+    # Upload all sprite animations into seperate groups of images based on direction.
+    # Animate movement based on direction.
+    # Fix animation speed of diagonal motion.
+
     def __init__(self, ai_settings, screen):
         """Initialize the unicorn dude and set his starting position."""
         self.screen = screen
         self.ai_settings = ai_settings
-        # Load the unicorn dude and get his rect.
-        # self.image = pygame.image.load('images/front_standing.bmp')
-    
+ 
+        # Create image groups for animation sprites and upload images.
         self.down_walking_images = []
+        self.upload_images(self.down_walking_images, 'down')
+
         self.up_walking_images = []
+        self.upload_images(self.up_walking_images, 'up')
+
         self.left_walking_images = []
+        self.upload_images(self.left_walking_images, 'left')
+
         self.right_walking_images = []
+        self.upload_images(self.right_walking_images, 'right')
+
         self.up_right_walking_images = []
+        self.upload_images(self.up_right_walking_images, 'up_right')
+
         self.up_left_walking_images = []
+        self.upload_images(self.up_left_walking_images, 'up_left')
+
         self.down_right_walking_images = []
+        self.upload_images(self.down_right_walking_images, 'down_right')
+
         self.down_left_walking_images = []
+        self.upload_images(self.down_left_walking_images, 'down_left')
 
-        for x in range(1, 7):
-            self.down_right_walking_images.append(
-                pygame.image.load('images/unicorn_dude/down_right_walking/' + str(x) + '.bmp'))
-
-        for x in range(1, 7):
-            self.down_left_walking_images.append(
-                pygame.image.load('images/unicorn_dude/down_left_walking/' + str(x) + '.bmp'))
-
-        for x in range(1, 7):
-            self.down_walking_images.append(
-                pygame.image.load('images/unicorn_dude/down_walking/' + str(x) + '.bmp'))
-        
-        for x in range(1, 7):
-            self.up_walking_images.append(
-                pygame.image.load('images/unicorn_dude/up_walking/' + str(x) + '.bmp'))
-
-        for x in range(1, 7):
-            self.left_walking_images.append(
-                pygame.image.load('images/unicorn_dude/left_walking/' + str(x) + '.bmp'))
-
-        for x in range(1, 7):
-            self.right_walking_images.append(
-                pygame.image.load('images/unicorn_dude/right_walking/' + str(x) + '.bmp'))
-        
-        for x in range(1, 7):
-            self.up_right_walking_images.append(
-                pygame.image.load('images/unicorn_dude/up_right_walking/' + str(x) + '.bmp'))
-
-        for x in range(1, 7):
-            self.up_left_walking_images.append(
-                pygame.image.load('images/unicorn_dude/up_left_walking/' + str(x) + '.bmp'))
-
-        # self.image = self.down_walking_images[self.index]
-
+        # Load the unicorn dude and get his rect.
         self.image = pygame.image.load('images/unicorn_dude/standing/down.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
+        # Set counter for changing animation frame and index for animations within group.
         self.counter = 0
         self.index = 0
 
@@ -71,6 +57,12 @@ class UnicornDude():
         self.moving_left = False
         self.moving_up = False
         self.moving_down = False
+        self.is_moving = False
+
+    def upload_images(self, image_group, direction):
+        for x in range(1, 7):
+            image_group.append(
+                pygame.image.load('images/unicorn_dude/' + direction + '_walking/' + str(x) + '.bmp'))
 
     def animate_movement(self, direction):
         self.counter += 1
@@ -144,8 +136,6 @@ class UnicornDude():
         # Update rect object from self.center
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
-
- 
 
     def blitme(self):
         """Draw the unicorn dude at his current location."""
