@@ -13,28 +13,28 @@ class UnicornDude():
  
         # Create image groups for animation sprites and upload images.
         self.down_walking_images = []
-        self.upload_images(self.down_walking_images, 'down')
+        self.load_images(self.down_walking_images, 'down')
 
         self.up_walking_images = []
-        self.upload_images(self.up_walking_images, 'up')
+        self.load_images(self.up_walking_images, 'up')
 
         self.left_walking_images = []
-        self.upload_images(self.left_walking_images, 'left')
+        self.load_images(self.left_walking_images, 'left')
 
         self.right_walking_images = []
-        self.upload_images(self.right_walking_images, 'right')
+        self.load_images(self.right_walking_images, 'right')
 
         self.up_right_walking_images = []
-        self.upload_images(self.up_right_walking_images, 'up_right')
+        self.load_images(self.up_right_walking_images, 'up_right')
 
         self.up_left_walking_images = []
-        self.upload_images(self.up_left_walking_images, 'up_left')
+        self.load_images(self.up_left_walking_images, 'up_left')
 
         self.down_right_walking_images = []
-        self.upload_images(self.down_right_walking_images, 'down_right')
+        self.load_images(self.down_right_walking_images, 'down_right')
 
         self.down_left_walking_images = []
-        self.upload_images(self.down_left_walking_images, 'down_left')
+        self.load_images(self.down_left_walking_images, 'down_left')
 
         # Load the unicorn dude and get his rect.
         self.image = pygame.image.load('images/unicorn_dude/standing/down.bmp')
@@ -59,7 +59,7 @@ class UnicornDude():
         self.moving_down = False
         self.is_moving = False
 
-    def upload_images(self, image_group, direction):
+    def load_images(self, image_group, direction):
         for x in range(1, 7):
             image_group.append(
                 pygame.image.load('images/unicorn_dude/' + direction + '_walking/' + str(x) + '.bmp'))
@@ -133,6 +133,7 @@ class UnicornDude():
                 self.animate_movement('down')
                 
             self.centery += self.ai_settings.unicorn_dude_speed_factor
+
         # Update rect object from self.center
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
