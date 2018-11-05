@@ -59,6 +59,7 @@ class UnicornDude():
         self.moving_down = False
 
     def load_images(self, image_group, direction):
+        """Load group of images used to animate movement of Unicorn Dude"""
         for x in range(1, 7):
             image_group.append(
                 pygame.image.load('images/unicorn_dude/' + direction + '_walking/' + str(x) + '.bmp'))
