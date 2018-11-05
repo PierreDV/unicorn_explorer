@@ -64,6 +64,8 @@ class UnicornDude():
                 pygame.image.load('images/unicorn_dude/' + direction + '_walking/' + str(x) + '.bmp'))
 
     def animate_movement(self, direction):
+        """Update sprite animation based on direction"""
+
         if direction == 'down':
             self.image = self.down_walking_images[self.index]
         elif direction == 'up':
@@ -82,7 +84,7 @@ class UnicornDude():
             self.image = self.up_left_walking_images[self.index]
 
     def update(self):
-        """Update the ship's position based on the movement flag."""
+        """Update the ship's position based on the movement flag and animate movement."""
         # Update the unicorn dude's center value, not the rect.
         if self.moving_down or self.moving_left or self.moving_right or self.moving_up:
             self.counter += 1
