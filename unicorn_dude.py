@@ -86,6 +86,7 @@ class UnicornDude():
             self.image = self.up_left_walking_images[self.index]
 
     def set_standing_image(self, direction):
+        """Set stationary image of Unicorn Dude"""
         self.image = pygame.image.load('images/unicorn_dude/standing/' + direction + '.bmp')
 
     def update(self):
