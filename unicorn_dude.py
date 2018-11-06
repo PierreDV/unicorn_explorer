@@ -57,6 +57,7 @@ class UnicornDude():
         self.moving_left = False
         self.moving_up = False
         self.moving_down = False
+        self.is_moving = False
 
     def load_images(self, image_group, direction):
         """Load group of images used to animate movement of Unicorn Dude"""
@@ -83,6 +84,9 @@ class UnicornDude():
             self.image = self.up_right_walking_images[self.index]
         else:
             self.image = self.up_left_walking_images[self.index]
+
+    def set_standing_image(self, direction):
+        self.image = pygame.image.load('images/unicorn_dude/standing/' + direction + '.bmp')
 
     def update(self):
         """Update the ship's position based on the movement flag and animate movement."""

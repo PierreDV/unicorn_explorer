@@ -23,15 +23,27 @@ def check_keydown_events(event, unicorn_dude):
         unicorn_dude.moving_down = True
 
 def check_keyup_events(event, unicorn_dude):
-    """Respond to keyreleases"""
+    """Respond to keyreleases."""
     if event.key == pygame.K_RIGHT:
         unicorn_dude.moving_right = False
+        check_sprite_movement(unicorn_dude, 'right')
     elif event.key == pygame.K_LEFT:
         unicorn_dude.moving_left = False
+        check_sprite_movement(unicorn_dude, 'left')
     elif event.key == pygame.K_UP:
         unicorn_dude.moving_up = False
+        check_sprite_movement(unicorn_dude, 'up')
     elif event.key == pygame.K_DOWN:
         unicorn_dude.moving_down = False
+        check_sprite_movement(unicorn_dude, 'down')
+
+def check_sprite_movement(unicorn_dude, direction):
+    """Check to see if Unicorn Dude is currently moving"""
+    if unicorn_dude.moving_up or unicorn_dude.moving_down or unicorn_dude.moving_left or unicorn_dude.moving_right:
+        unicorn_dude.is_moving = True
+    else:
+        unicorn_dude.is_moving = False
+        unicorn_dude.set_standing_image(direction)
 
 def update_screen(ai_settings, screen, unicorn_dude):
     """Update images on the screen and flip to the new screen."""
